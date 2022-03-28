@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity" android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:fontFamily="@font/sf_pro_bold"
+        android:text="@string/title"
+        android:textSize="24dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:fontFamily="@font/sf_pro_regular"
+        android:text="@string/reels_definition"
+        android:textSize="20dp" />
+
+    <VideoView
+        android:id="@+id/videoToShare"
+        android:layout_width="200dp"
+        android:layout_height="350dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="30dp"
+        android:contentDescription="@string/blank_video"/>
+
+    <Button
+        android:id="@+id/btnLoadVideo"
+        android:text="@string/load_image"
+        android:backgroundTint="#E7F3FF"
+        android:textColor="#1763CF"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:padding="5dp"
+        app:cornerRadius="6dp"
+
+        android:fontFamily="@font/sf_pro_medium"
+        android:textAllCaps="false"
+
+        android:stateListAnimator="@null"/>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnShareToReels"
+            android:text="@string/share_to_reels"
+            android:backgroundTint="#1B74E4"
+            android:textColor="#fff"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:padding="5dp"
+            app:cornerRadius="6dp"
+
+            android:fontFamily="@font/sf_pro_medium"
+            android:textAllCaps="false"
+
+            android:stateListAnimator="@null"
+            android:enabled="false"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnShareToReelsWithSticker"
+            android:text="@string/share_to_reels_with_sticker"
+            android:backgroundTint="#E4E6EB"
+            android:textColor="#050505"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:padding="5dp"
+            app:cornerRadius="6dp"
+
+            android:fontFamily="@font/sf_pro_medium"
+            android:textAllCaps="false"
+
+            android:stateListAnimator="@null"
+            android:enabled="false"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/panel_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_medium"
+            android:text="@string/additional_info_title"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:text="@string/additional_info_text"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
