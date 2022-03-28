@@ -44,7 +44,7 @@ You will need to fill in your app id in the `"YOUR_APP_ID"` strings.
 >- Open the Settings App;
 >- Scroll down to About Phone;
 >- Tap Software Information;
->- Tap Build numb\er seven times;
+>- Tap Build number seven times;
 >- Enter your pin or password;
 >- Go back to the initial screen of the Settings App and the Developer Options tab should be there;
 >- Access the Developer Options on your phone and enable USB debugging.
