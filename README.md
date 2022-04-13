@@ -1,7 +1,7 @@
 # Share to Reels
 ## Android Sample App
 
-This demo shows the integration of Share to Reels (Facebook) with a sample Android app. Once you run the app, you will reach a screen where you can upload a video from your gallery. Then, you have two options to choose:
+This is an Android Sample app with an integration to Facebook Share to Reels. Once you run the app, you will reach a screen where you can upload a video from your gallery. Then, you have two options to choose:
 
 - Share to reels
 - Share to reels with sticker
