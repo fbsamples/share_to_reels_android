@@ -1,4 +1,4 @@
-# Share to Facebook Reels
+# Share to Reels
 ## Android Sample App
 
 This demo shows the integration of Share to Reels (Facebook) with a sample Android app. Once you run the app, you will reach a screen where you can upload a video from your gallery. Then, you have two options to choose:
@@ -49,5 +49,9 @@ You will need to fill in your app id in the `"YOUR_APP_ID"` strings.
 >- Go back to the initial screen of the Settings App and the Developer Options tab should be there;
 >- Access the Developer Options on your phone and enable USB debugging.
 
+## iOS Sample App
+
+If you want to see the iOS integration, you can access [this project](https://github.com/fbsamples/share_to_reels_ios).
+
 ## License
-share_to_reels_android is  Facebook Platform Policy licensed, as found in the LICENSE file.
+Share to Reels Android is Meta Platform Policy licensed, as found in the LICENSE file.
