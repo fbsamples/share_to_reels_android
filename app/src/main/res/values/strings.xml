@@ -9,4 +9,5 @@
     <string name="additional_info_title">Sharing to Facebook Reels</string>
     <string name="additional_info_text">Upload a video and choose one of the options to share it on Facebook Reels!</string>
     <string name="facebook_app_id">YOUR_APP_ID</string>
+    <string name="facebook_client_token">YOUR_CLIENT_TOKEN</string>
 </resources>
