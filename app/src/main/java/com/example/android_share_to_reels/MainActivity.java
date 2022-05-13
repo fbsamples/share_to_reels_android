@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btnLoadVideo.setOnClickListener(view -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.addCategory(Intent. CATEGORY_OPENABLE);
-            intent.setType("video/mp4");
+            intent.setType("video/*");
             activity.startActivityForResult(intent, imageRequestCode);
         });
 
