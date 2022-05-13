@@ -26,8 +26,12 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+        <provider android:authorities="com.facebook.app.FacebookContentProvider"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true" />
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
     <queries>
         <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
 
