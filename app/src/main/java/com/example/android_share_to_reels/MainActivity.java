@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         btnShareToReelsWithSticker = findViewById(R.id.btnShareToReelsWithSticker);
 
         // Define initial state
-        changeBtnStatus(btnShareToReels, false);
-        changeBtnStatus(btnShareToReelsWithSticker, false);
+        changeBtnStatus(btnShareToReels, true);
+        changeBtnStatus(btnShareToReelsWithSticker, true);
         loadSampleVideo();
 
         btnLoadVideo.setOnClickListener(view -> {
@@ -141,9 +141,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadSampleVideo() {
-        String path = "android.resource://" + getPackageName() + "/" + R.raw.sample_video;
-        Uri sampleVideoUri = Uri.parse(path);
-        loadVideoPreview(sampleVideoUri);
+        targetUri = createExternalURIFromResource(R.raw.sample_video, "sample_video.MOV");
+        loadVideoPreview(targetUri);
     }
 
     private void showFailureMessage(Activity activity) {
