@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btnLoadVideo.setOnClickListener(view -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.addCategory(Intent. CATEGORY_OPENABLE);
-            intent.setType("video/mp4");
+            intent.setType("video/*");
             activity.startActivityForResult(intent, imageRequestCode);
         });
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("com.facebook.platform.extra.APPLICATION_ID", appID);
 
             // Define and video asset URI
-            intent.setDataAndType(targetUri, "video/mp4");
+            intent.setDataAndType(targetUri, "video/*");
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
             // Instantiate activity and verify it will resolve implicit intent
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("com.facebook.platform.extra.APPLICATION_ID", appID);
 
             // Define video URI
-            intent.setDataAndType(targetUri, "video/mp4");
+            intent.setDataAndType(targetUri, "video/*");
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
             // Define sticker URI
