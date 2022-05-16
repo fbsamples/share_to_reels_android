@@ -22,15 +22,17 @@ In order to run the sample app you will need to install some required software, 
 - Java Runtime AutoUpgrader;
 - Adopt OpenJDK 8.
 
-## Add your app id
+## Add your app ID and client token
 
-In order to run the app, you will need to update the code and add your Facebook Developer App Id. If you don't have an app, check out this [link](https://developers.facebook.com/docs/development/).
+In order to run the app, you will need to update the code and add your Facebook Developer App ID and Client Token. If you don't have an app, check out this [link](https://developers.facebook.com/docs/development/).
 
-Update the following files:
-- MainActivity.java
+Update the following file(s):
 - strings.xml
 
-You will need to fill in your app id in the `"YOUR_APP_ID"` strings.
+You will need to replace `YOUR_APP_ID` with your app's ID and `YOUR_CLIENT_TOKEN` with your app's client token. Your app's ID can be found [here](https://developers.facebook.com/apps). The client token can be found in your app's dashboard by following these steps:
+1. Sign into your developer account.
+2. On the Apps page, select an app to open the dashboard for that app.
+3. On the Dashboard, navigate to Settings > Advanced > Security > Client token.
 
 ## Running the project
 

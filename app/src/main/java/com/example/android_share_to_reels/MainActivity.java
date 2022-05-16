@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final Activity activity = this;
-        final String appID = "YOUR_APP_ID";
+        final String appID = getString(R.string.facebook_app_id);
 
         // Get target elements
         videoToShare = findViewById(R.id.videoToShare);
