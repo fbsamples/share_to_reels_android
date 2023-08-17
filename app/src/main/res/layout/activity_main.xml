@@ -1,122 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".MainActivity" android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginHorizontal="15dp"
-        android:fontFamily="@font/sf_pro_bold"
-        android:text="@string/title"
-        android:textSize="24dp" />
+        <TextView
+            android:id="@+id/title"
+            style="@style/AppHeader.Title"
+            android:text="@string/title"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:fontFamily="@font/sf_pro_regular"
-        android:text="@string/reels_definition"
-        android:textSize="20dp" />
+        <TextView
+            android:id="@+id/subtitle"
+            style="@style/AppHeader.Subtitle"
+            android:layout_below="@id/title"
+            android:text="@string/reels_definition"/>
 
-    <VideoView
-        android:id="@+id/videoToShare"
-        android:layout_width="200dp"
-        android:layout_height="350dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp"
-        android:contentDescription="@string/blank_video"/>
-
-    <Button
-        android:id="@+id/btnLoadVideo"
-        android:text="@string/load_image"
-        android:backgroundTint="#E7F3FF"
-        android:textColor="#1763CF"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:padding="5dp"
-        app:cornerRadius="6dp"
-
-        android:fontFamily="@font/sf_pro_medium"
-        android:textAllCaps="false"
-
-        android:stateListAnimator="@null"/>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout02"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:orientation="horizontal">
+        <VideoView
+            android:id="@+id/videoToShare"
+            android:layout_width="200dp"
+            android:layout_height="350dp"
+            android:layout_below="@id/subtitle"
+            android:layout_centerInParent="true"
+            android:layout_margin="30dp"
+            android:contentDescription="@string/blank_video"/>
 
         <Button
-            android:id="@+id/btnShareToReels"
+            android:id="@+id/btnLoadVideo"
+            android:text="@string/upload_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/videoToShare"
+            android:layout_marginHorizontal="24dp"
+            style="@style/StandardBtn.Upload"/>
+
+        <TextView
+            android:id="@+id/fb_reels"
+            android:text="@string/fb_reels"
+            android:layout_below="@id/btnLoadVideo"
+            style="@style/SectionTitle"/>
+
+        <Button
+            android:id="@+id/btnShareToFBReels"
             android:text="@string/share_to_reels"
-            android:backgroundTint="#1B74E4"
-            android:textColor="#fff"
-
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:padding="5dp"
-            app:cornerRadius="6dp"
-
-            android:fontFamily="@font/sf_pro_medium"
-            android:textAllCaps="false"
-
-            android:stateListAnimator="@null"
-            android:enabled="false"
-            android:layout_weight="1"/>
+            android:layout_below="@id/fb_reels"
+            android:layout_alignStart="@id/fb_reels"
+            android:layout_marginEnd="5dp"
+            style="@style/StandardBtn.Primary"/>
 
         <Button
-            android:id="@+id/btnShareToReelsWithSticker"
+            android:id="@+id/btnShareToFBReelsWithSticker"
             android:text="@string/share_to_reels_with_sticker"
-            android:backgroundTint="#E4E6EB"
-            android:textColor="#050505"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:padding="5dp"
-            app:cornerRadius="6dp"
+            android:layout_marginStart="5dp"
+            android:layout_below="@id/fb_reels"
+            android:layout_alignEnd="@id/fb_reels"
+            android:layout_toEndOf="@id/btnShareToFBReels"
+            style="@style/StandardBtn.Secondary"/>
 
-            android:fontFamily="@font/sf_pro_medium"
-            android:textAllCaps="false"
-
-            android:stateListAnimator="@null"
-            android:enabled="false"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout03"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="15dp"
-        android:background="@drawable/panel_background"
-        android:orientation="vertical">
+        <View
+            android:id="@+id/divisionLine1"
+            style="@style/DivisionLine"
+            android:layout_below="@id/btnShareToFBReelsWithSticker"/>
 
         <TextView
+            android:id="@+id/ig_reels"
+            style="@style/SectionTitle"
+            android:layout_below="@id/divisionLine1"
+            android:text="@string/ig_reels" />
+
+        <Button
+            android:id="@+id/btnShareToIGReels"
+            android:text="@string/share_to_reels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_below="@id/ig_reels"
+            android:layout_alignStart="@id/ig_reels"
+            style="@style/StandardBtn.Primary"/>
+
+        <Button
+            android:id="@+id/btnShareToIGReelsWithSticker"
+            android:text="@string/share_to_reels_with_sticker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/sf_pro_medium"
-            android:text="@string/additional_info_title"
-            android:textSize="17dp" />
+            android:layout_marginStart="5dp"
+            android:layout_below="@id/ig_reels"
+            android:layout_alignEnd="@id/ig_reels"
+            android:layout_toEndOf="@id/btnShareToIGReels"
+            style="@style/StandardBtn.Secondary"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sf_pro_regular"
-            android:text="@string/additional_info_text"
-            android:textSize="15dp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+        <View
+            android:id="@+id/divisionLine2"
+            style="@style/DivisionLine"
+            android:layout_below="@id/btnShareToIGReels"/>
+    </RelativeLayout>
+</ScrollView>

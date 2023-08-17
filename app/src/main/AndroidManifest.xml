@@ -15,7 +15,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -26,15 +25,16 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <provider android:authorities="com.facebook.app.FacebookContentProvider"
+        <provider android:authorities="com.facebook.FacebookContentProvider"
             android:name="com.facebook.FacebookContentProvider"
             android:exported="true" />
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <queries>
         <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
-
+        <package android:name="com.instagram.android" />
     </queries>
 </manifest>

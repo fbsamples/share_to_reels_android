@@ -1,13 +1,15 @@
 <resources>
     <string name="app_name">Android ShareToReels</string>
-    <string name="load_image">Upload Video</string>
+    <string name="upload_video">Upload Video</string>
     <string name="share_to_reels">Share to Reels</string>
     <string name="share_to_reels_with_sticker">Share with Sticker</string>
-    <string name="blank_video">Blank video</string>
+    <string name="blank_video">Blank Video</string>
     <string name="title">Share to Reels</string>
-    <string name="reels_definition">Now you can share a video from your app directly to Facebook Reels!</string>
-    <string name="additional_info_title">Sharing to Facebook Reels</string>
-    <string name="additional_info_text">Upload a video and choose one of the options to share it on Facebook Reels!</string>
+    <string name="reels_definition">Now you can share a video from your app directly to Facebook or Instagram Reels!</string>
+    <string name="additional_info_title">Sharing to Reels</string>
+    <string name="additional_info_text">Upload a video and choose one of the options to share it on Facebook or Instagram Reels!</string>
+    <string name="ig_reels">Instagram Reels</string>
+    <string name="fb_reels">Facebook Reels</string>
     <string name="facebook_app_id">YOUR_APP_ID</string>
     <string name="facebook_client_token">YOUR_CLIENT_TOKEN</string>
 </resources>
