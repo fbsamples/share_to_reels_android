@@ -1,9 +1,9 @@
 /* Copyright (c) Meta Platforms, Inc. and affiliates.
-* All rights reserved.
-*
-* This source code is licensed under the license found in the
-* LICENSE file in the root directory of this source tree.
-*/
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
 package com.example.android_share_to_reels;
 
@@ -25,16 +25,27 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.facebook.FacebookSdk;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnShareToReels, btnShareToReelsWithSticker;
     private VideoView videoToShare;
+    private Button btnLoadVideo, btnShareToFBReels, btnShareToFBReelsWithSticker,
+            btnShareToIGReels, btnShareToIGReelsWithSticker;
+    private ArrayList<Button> buttons;
     private Uri targetUri;
+    private String appID;
 
-    final int imageRequestCode = 42;
+    final int videoRequestCode = 42;
+    final String fbReelsIntentName = "com.facebook.reels.SHARE_TO_REEL";
+    final String igReelsIntentName = "com.instagram.share.ADD_TO_REEL";
+    final String fbPackageName = "com.facebook.katana";
+    final String igPackageName = "com.instagram.android";
+    final String fbAppName = "Facebook";
+    final String igAppName = "Instagram";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,96 +53,156 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final Activity activity = this;
-        final String appID = getString(R.string.facebook_app_id);
 
-        // Get target elements
-        videoToShare = findViewById(R.id.videoToShare);
-        Button btnLoadVideo = findViewById(R.id.btnLoadVideo);
-        btnShareToReels = findViewById(R.id.btnShareToReels);
-        btnShareToReelsWithSticker = findViewById(R.id.btnShareToReelsWithSticker);
-
-        // Define initial state
-        changeBtnStatus(btnShareToReels, true);
-        changeBtnStatus(btnShareToReelsWithSticker, true);
-        loadSampleVideo();
+        appID = getString(R.string.facebook_app_id);
+        getTargetElements();
+        buttons = new ArrayList<>(Arrays.asList(
+                btnLoadVideo, btnShareToFBReels, btnShareToFBReelsWithSticker,
+                btnShareToIGReels, btnShareToIGReelsWithSticker));
+        loadInitialState();
+        Uri stickerAssetUri = createExternalURIFromResource(R.raw.sticker, "sticker.png");
 
         btnLoadVideo.setOnClickListener(view -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.addCategory(Intent. CATEGORY_OPENABLE);
             intent.setType("video/*");
-            activity.startActivityForResult(intent, imageRequestCode);
+            activity.startActivityForResult(intent, videoRequestCode);
         });
 
-        btnShareToReels.setOnClickListener(view -> {
-            // Instantiate implicit intent with SHARE_TO_REEL action
-            Intent intent = new Intent("com.facebook.reels.SHARE_TO_REEL");
-
-            // Set Application ID
-            intent.putExtra("com.facebook.platform.extra.APPLICATION_ID", appID);
-
-            // Define and video asset URI
-            intent.setDataAndType(targetUri, "video/*");
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-            // Instantiate activity and verify it will resolve implicit intent
-            activity.grantUriPermission("com.facebook.katana", targetUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        btnShareToFBReels.setOnClickListener(view -> {
+            Intent intent = buildFBReelsIntent();
 
             if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
                 activity.startActivityForResult(intent, 0);
             } else {
-                showFailureMessage(activity);
+                showFailureMessage(activity, fbAppName);
             }
         });
 
-        btnShareToReelsWithSticker.setOnClickListener(view -> {
-            // Instantiate implicit intent with SHARE_TO_REEL action
-            Intent intent = new Intent("com.facebook.reels.SHARE_TO_REEL");
+        btnShareToFBReelsWithSticker.setOnClickListener(view -> {
+            Intent intent = buildFBReelsIntent();
 
-            // Set Application ID
-            intent.putExtra("com.facebook.platform.extra.APPLICATION_ID", appID);
+            defineStickerURI(intent, stickerAssetUri);
+            giveUriPermissions(activity, intent, stickerAssetUri);
 
-            // Define video URI
-            intent.setDataAndType(targetUri, "video/*");
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-            // Define sticker URI
-            Uri stickerAssetUri = createExternalURIFromResource(R.raw.sticker, "sticker.png");
-            intent.putExtra("top_background_color", "#71b280");
-            intent.putExtra("bottom_background_color", "#71b280");
-
-            intent.putExtra("interactive_asset_uri", stickerAssetUri);
-
-            // Give permissions
-            List<ResolveInfo> resInfoList =
-                    activity
-                            .getPackageManager()
-                            .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-
-            for (ResolveInfo resolveInfo : resInfoList) {
-                String packageName = resolveInfo.activityInfo.packageName;
-                activity.grantUriPermission(packageName, stickerAssetUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            }
-
-            // Start activity
             if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
-              activity.startActivityForResult(intent, 2);
+                activity.startActivityForResult(intent, 0);
             } else {
-                showFailureMessage(activity);
+                showFailureMessage(activity, fbAppName);
+            }
+        });
+
+        btnShareToIGReels.setOnClickListener(view -> {
+            Intent intent = buildIGReelsIntent();
+
+            if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
+                activity.startActivityForResult(intent, 0);
+            } else {
+                showFailureMessage(activity, igAppName);
+            }
+        });
+
+        btnShareToIGReelsWithSticker.setOnClickListener(view -> {
+            Intent intent = buildIGReelsIntent();
+
+            defineStickerURI(intent, stickerAssetUri);
+            giveUriPermissions(activity, intent, stickerAssetUri);
+
+            if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
+                activity.startActivityForResult(intent, 0);
+            } else {
+                showFailureMessage(activity, igAppName);
             }
         });
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        loadVideoPreview(targetUri);
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == -1 && data != null && requestCode == imageRequestCode) {
+        if (resultCode == -1 && data != null && requestCode == videoRequestCode) {
             targetUri = data.getData();
             loadVideoPreview(targetUri);
-            changeBtnStatus(btnShareToReels, true);
-            changeBtnStatus(btnShareToReelsWithSticker, true);
+            for (Button b: buttons) {
+                changeBtnStatus(b, true);
+            }
         } else {
             loadVideoPreview(targetUri);
         }
+    }
+
+    private void getTargetElements() {
+        videoToShare = findViewById(R.id.videoToShare);
+        btnLoadVideo = findViewById(R.id.btnLoadVideo);
+        btnShareToFBReels = findViewById(R.id.btnShareToFBReels);
+        btnShareToFBReelsWithSticker = findViewById(R.id.btnShareToFBReelsWithSticker);
+        btnShareToIGReels = findViewById(R.id.btnShareToIGReels);
+        btnShareToIGReelsWithSticker = findViewById(R.id.btnShareToIGReelsWithSticker);
+    }
+
+    private void loadInitialState() {
+        for (Button b: buttons) {
+            changeBtnStatus(b, true);
+        }
+        loadSampleVideo();
+    }
+
+    private Intent buildFBReelsIntent() {
+        Intent intent = getInitialIntent(fbReelsIntentName);
+        intent.setPackage(fbPackageName);
+
+        intent.putExtra("com.facebook.platform.extra.APPLICATION_ID", appID);
+        this.grantUriPermission(fbPackageName, targetUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        giveUriPermissions(this, intent, targetUri);
+
+        return intent;
+    }
+
+    private Intent buildIGReelsIntent() {
+        Intent intent = getInitialIntent(igReelsIntentName);
+        intent.setPackage(igPackageName);
+
+        intent.putExtra("source_application", this.getPackageName());
+        intent.putExtra("com.instagram.platform.extra.APPLICATION_ID", appID);
+        intent.putExtra(Intent.EXTRA_STREAM, targetUri);
+        this.grantUriPermission(igPackageName, targetUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        giveUriPermissions(this, intent, targetUri);
+
+        return intent;
+    }
+
+    private Intent getInitialIntent(String intentName) {
+        Intent intent = new Intent(intentName);
+        defineVideoURI(intent);
+
+        return intent;
+    }
+
+    private void defineStickerURI(Intent intent, Uri stickerAssetUri) {
+        intent.putExtra("interactive_asset_uri", stickerAssetUri);
+    }
+
+    private void giveUriPermissions(Activity activity, Intent intent, Uri uri) {
+        List<ResolveInfo> resInfoList =
+                activity
+                        .getPackageManager()
+                        .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+
+        for (ResolveInfo resolveInfo : resInfoList) {
+            String packageName = resolveInfo.activityInfo.packageName;
+            activity.grantUriPermission(packageName, uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }
+    }
+
+    private void defineVideoURI(Intent intent) {
+        intent.setDataAndType(targetUri, "video/*");
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
     }
 
     private void loadVideoPreview(Uri path) {
@@ -142,12 +213,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadSampleVideo() {
         targetUri = createExternalURIFromResource(R.raw.sample_video, "sample_video.MOV");
+
         loadVideoPreview(targetUri);
     }
 
-    private void showFailureMessage(Activity activity) {
-
-        String message = "Please ensure that the facebook app is installed";
+    private void showFailureMessage(Activity activity, String appName) {
+        String message = "Please ensure that the " + appName + " app is installed.";
         Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
     }
 
@@ -168,14 +239,17 @@ public class MainActivity extends AppCompatActivity {
             parent.mkdir();
             File file = new File(parent, filename);
             copy(resId, file);
-            return FileProvider.getUriForFile(getApplicationContext(), "com.example.android_share_to_reels.fileprovider", file);
+            return FileProvider
+                    .getUriForFile(getApplicationContext(),
+                            "com.example.android_share_to_reels.fileprovider", file);
         } catch (IOException ex) {
             throw new RuntimeException("Failed to create share content", ex);
         }
     }
 
     public static void copy(int resourceId, File dst) throws IOException {
-        InputStream in = FacebookSdk.getApplicationContext().getResources().openRawResource(resourceId);
+        InputStream in = FacebookSdk.getApplicationContext()
+                .getResources().openRawResource(resourceId);
         OutputStream out = new FileOutputStream(dst);
 
         // Transfer bytes from in to out
@@ -187,5 +261,4 @@ public class MainActivity extends AppCompatActivity {
         in.close();
         out.close();
     }
-
 }
