@@ -88,6 +88,15 @@ public class Utils {
         return intent;
     }
 
+    public static Intent getMediaUploaderIntent() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[] {"image/*", "video/*"});
+
+        return intent;
+    }
+
     public static Uri getSampleVideo(Context context) {
         return createExternalURIFromResource(context, R.raw.sample_video, "sample_video.MOV");
     }

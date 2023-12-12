@@ -35,6 +35,9 @@
         <activity android:name="com.example.android_share_to_reels.ShareToIGReelsMultiImagesActivity">
         </activity>
 
+        <activity android:name="com.example.android_share_to_reels.ShareToIGReelsMultiMediaActivity">
+        </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android_share_to_reels.fileprovider"

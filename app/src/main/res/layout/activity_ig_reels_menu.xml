@@ -81,5 +81,21 @@
             style="@style/DivisionLine"
             android:layout_below="@id/ig_reels_multiple_images_row"/>
 
+        <TableRow
+            android:id="@+id/ig_reels_multiple_media_row"
+            android:onClick="onClick"
+            android:layout_below="@id/divisionLine5">
+            <TextView
+                android:id="@+id/ig_reels_multiple_media_text"
+                style="@style/SectionTitle"
+                android:layout_below="@id/divisionLine5"
+                android:text="@string/ig_reels_multiple_media" />
+        </TableRow>
+
+        <View
+            android:id="@+id/divisionLine6"
+            style="@style/DivisionLine"
+            android:layout_below="@id/ig_reels_multiple_media_row"/>
+
     </TableLayout>
 </ScrollView>

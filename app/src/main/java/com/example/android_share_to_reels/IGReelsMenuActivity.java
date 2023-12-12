@@ -27,6 +27,7 @@ public class IGReelsMenuActivity extends AppCompatActivity {
             put(findViewById(R.id.ig_reels_multiple_clips_row), ShareToIGReelsMultiClipsActivity.class);
             put(findViewById(R.id.ig_reels_single_image_row), ShareToIGReelsSingleImageActivity.class);
             put(findViewById(R.id.ig_reels_multiple_images_row), ShareToIGReelsMultiImagesActivity.class);
+            put(findViewById(R.id.ig_reels_multiple_media_row), ShareToIGReelsMultiMediaActivity.class);
         }};
 
         for (Map.Entry<TableRow, Class<?>> entry : m.entrySet()) {
