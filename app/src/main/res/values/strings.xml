@@ -1,15 +1,27 @@
 <resources>
     <string name="app_name">Android ShareToReels</string>
     <string name="upload_video">Upload Video</string>
-    <string name="share_to_reels">Share to Reels</string>
-    <string name="share_to_reels_with_sticker">Share with Sticker</string>
+    <string name="upload_video_multiple">Upload Video(s)</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="upload_image_multiple">Upload Image(s)</string>
+    <string name="share">Share</string>
+    <string name="share_with_sticker">Share with Sticker</string>
     <string name="blank_video">Blank Video</string>
-    <string name="title">Share to Reels</string>
-    <string name="reels_definition">Now you can share a video from your app directly to Facebook or Instagram Reels!</string>
-    <string name="additional_info_title">Sharing to Reels</string>
-    <string name="additional_info_text">Upload a video and choose one of the options to share it on Facebook or Instagram Reels!</string>
-    <string name="ig_reels">Instagram Reels</string>
-    <string name="fb_reels">Facebook Reels</string>
+    <string name="blank_image">Blank Image</string>
+    <string name="main_activity_title">Share to Reels</string>
+    <string name="fb_reels_title">Share to Facebook Reels</string>
+    <string name="ig_reels_title">Share to Instagram Reels</string>
+    <string name="fb_reels_subtitle">Share a video from your app directly to Facebook Reels!</string>
+    <string name="ig_reels_single_clip_subtitle">Share a single video clip from your app directly to Instagram Reels!</string>
+    <string name="ig_reels_multi_clips_subtitle">Share multiple clips from your app directly to Instagram Reels!</string>
+    <string name="ig_reels_single_image_subtitle">Share a single image from your app directly to Instagram Reels!</string>
+    <string name="ig_reels_multi_images_subtitle">Share multiple images from your app directly to Instagram Reels!</string>
     <string name="facebook_app_id">YOUR_APP_ID</string>
     <string name="facebook_client_token">YOUR_CLIENT_TOKEN</string>
+    <string name="fb_reels">Facebook Reels</string>
+    <string name="ig_reels">Instagram Reels</string>
+    <string name="ig_reels_single_clip">Single Clip</string>
+    <string name="ig_reels_multiple_clips">Multiple Clips</string>
+    <string name="ig_reels_single_image">Single Image</string>
+    <string name="ig_reels_multiple_images">Multiple Images</string>
 </resources>
