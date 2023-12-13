@@ -16,20 +16,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class IGReelsMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_ig_reels_menu);
 
         HashMap<TableRow, Class<?>> m = new HashMap<TableRow, Class<?>>() {{
-            put(findViewById(R.id.fb_reels_row), ShareToFBReelsActivity.class);
-            put(findViewById(R.id.ig_reels_row), IGReelsMenuActivity.class);
+            put(findViewById(R.id.ig_reels_single_clip_row), ShareToIGReelsSingleClipActivity.class);
+            put(findViewById(R.id.ig_reels_multiple_clips_row), ShareToIGReelsMultiClipsActivity.class);
+            put(findViewById(R.id.ig_reels_single_image_row), ShareToIGReelsSingleImageActivity.class);
+            put(findViewById(R.id.ig_reels_multiple_images_row), ShareToIGReelsMultiImagesActivity.class);
+            put(findViewById(R.id.ig_reels_multiple_media_row), ShareToIGReelsMultiMediaActivity.class);
         }};
 
         for (Map.Entry<TableRow, Class<?>> entry : m.entrySet()) {
             entry.getKey().setOnClickListener(view -> {
-                Intent i = new Intent(MainActivity.this, entry.getValue());
+                Intent i = new Intent(IGReelsMenuActivity.this, entry.getValue());
                 startActivity(i);
             });
         }

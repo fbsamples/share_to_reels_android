@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity" android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/AppHeader.Title"
+            android:text="@string/ig_reels_title"/>
+
+        <TextView
+            android:id="@+id/subtitle"
+            style="@style/AppHeader.Subtitle"
+            android:layout_below="@id/title"
+            android:text="@string/ig_reels_single_image_subtitle"/>
+
+        <ImageView
+            android:id="@+id/imageToShare"
+            android:layout_width="200dp"
+            android:layout_height="350dp"
+            android:layout_below="@id/subtitle"
+            android:layout_centerInParent="true"
+            android:layout_margin="30dp"
+            android:contentDescription="@string/blank_image"/>
+
+        <Button
+            android:id="@+id/btnLoadImage"
+            android:text="@string/upload_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageToShare"
+            android:layout_marginHorizontal="24dp"
+            style="@style/StandardBtn.Upload"/>
+
+        <View
+            android:id="@+id/divisionLine1"
+            style="@style/DivisionLine"
+            android:layout_below="@id/btnLoadImage"/>
+
+        <TextView
+            android:id="@+id/ig_reels"
+            style="@style/SectionTitle"
+            android:layout_below="@id/divisionLine1"
+            android:text="@string/ig_reels" />
+
+        <Button
+            android:id="@+id/btnShareToIGReels"
+            android:text="@string/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_below="@id/ig_reels"
+            android:layout_alignStart="@id/ig_reels"
+            style="@style/StandardBtn.Primary"/>
+
+        <Button
+            android:id="@+id/btnShareToIGReelsWithSticker"
+            android:text="@string/share_with_sticker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_below="@id/ig_reels"
+            android:layout_alignEnd="@id/ig_reels"
+            android:layout_toEndOf="@id/btnShareToIGReels"
+            style="@style/StandardBtn.Secondary"/>
+
+        <View
+            android:id="@+id/divisionLine2"
+            style="@style/DivisionLine"
+            android:layout_below="@id/btnShareToIGReels"/>
+
+    </RelativeLayout>
+</ScrollView>

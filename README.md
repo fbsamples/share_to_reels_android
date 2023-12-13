@@ -2,11 +2,11 @@
 
 ## Android Sample App
 
-This is an Android sample app with integrations for sharing to Facebook and Instagram Reels. After running the app, you will reach a screen where you can upload a video from your phone's gallery app.
+This is an Android sample app with integrations for sharing to Facebook and Instagram Reels. After running the app, you will reach a screen where you can upload media from your phone's gallery app.
 
-You can choose to share with or without a sticker. If you choose one of the sticker options, the media file is uploaded with an embedded sticker.
+You can choose to share with or without a sticker. If you choose one of the sticker options, the media is shared with an embedded sticker.
 
-The integration code is available under `app/src/main/java/com/example/android_share_to_reels/MainActivity.java`. There, you can find buttons for sharing to Reels. Each button has an onClick event listener. You can find the code for the Share to Reels integration there.
+The integration code is available under `app/src/main/java/com/example/android_share_to_reels`. There, you can find buttons for sharing to Reels. Each button has an onClick event listener. You can find the code for the Share to Reels integration there.
 
 > :warning: You will need to enable **FacebookSdk** for your project. Follow the instructions on this [link](https://developers.facebook.com/docs/android/getting-started/) for that.
 

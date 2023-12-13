@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity" android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/AppHeader.Title"
+            android:text="@string/ig_reels_title"/>
+
+        <View
+            android:id="@+id/divisionLine1"
+            style="@style/DivisionLine"
+            android:layout_below="@id/title"/>
+
+        <TableRow
+            android:id="@+id/ig_reels_single_clip_row"
+            android:onClick="onClick"
+            android:layout_below="@id/divisionLine1">
+            <TextView
+                android:id="@+id/ig_reels_single_clip_text"
+                style="@style/SectionTitle"
+                android:text="@string/ig_reels_single_clip" />
+        </TableRow>
+
+        <View
+            android:id="@+id/divisionLine2"
+            style="@style/DivisionLine"
+            android:layout_below="@id/ig_reels_single_clip_row"/>
+
+        <TableRow
+            android:id="@+id/ig_reels_multiple_clips_row"
+            android:onClick="onClick"
+            android:layout_below="@id/divisionLine2">
+            <TextView
+                android:id="@+id/ig_reels_multiple_clips_text"
+                style="@style/SectionTitle"
+                android:text="@string/ig_reels_multiple_clips" />
+        </TableRow>
+
+        <View
+            android:id="@+id/divisionLine3"
+            style="@style/DivisionLine"
+            android:layout_below="@id/ig_reels_multiple_clips_row"/>
+
+        <TableRow
+            android:id="@+id/ig_reels_single_image_row"
+            android:onClick="onClick"
+            android:layout_below="@id/divisionLine3">
+            <TextView
+                android:id="@+id/ig_reels_single_image_text"
+                style="@style/SectionTitle"
+                android:layout_below="@id/divisionLine3"
+                android:text="@string/ig_reels_single_image" />
+        </TableRow>
+
+        <View
+            android:id="@+id/divisionLine4"
+            style="@style/DivisionLine"
+            android:layout_below="@id/ig_reels_single_image_row"/>
+
+        <TableRow
+            android:id="@+id/ig_reels_multiple_images_row"
+            android:onClick="onClick"
+            android:layout_below="@id/divisionLine4">
+            <TextView
+                android:id="@+id/ig_reels_multiple_images_text"
+                style="@style/SectionTitle"
+                android:layout_below="@id/divisionLine4"
+                android:text="@string/ig_reels_multiple_images" />
+        </TableRow>
+
+        <View
+            android:id="@+id/divisionLine5"
+            style="@style/DivisionLine"
+            android:layout_below="@id/ig_reels_multiple_images_row"/>
+
+        <TableRow
+            android:id="@+id/ig_reels_multiple_media_row"
+            android:onClick="onClick"
+            android:layout_below="@id/divisionLine5">
+            <TextView
+                android:id="@+id/ig_reels_multiple_media_text"
+                style="@style/SectionTitle"
+                android:layout_below="@id/divisionLine5"
+                android:text="@string/ig_reels_multiple_media" />
+        </TableRow>
+
+        <View
+            android:id="@+id/divisionLine6"
+            style="@style/DivisionLine"
+            android:layout_below="@id/ig_reels_multiple_media_row"/>
+
+    </TableLayout>
+</ScrollView>

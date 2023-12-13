@@ -16,6 +16,28 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name="com.example.android_share_to_reels.ShareToFBReelsActivity">
+        </activity>
+
+        <activity android:name="com.example.android_share_to_reels.IGReelsMenuActivity">
+        </activity>
+
+        <activity android:name="com.example.android_share_to_reels.ShareToIGReelsSingleClipActivity">
+        </activity>
+
+        <activity android:name="com.example.android_share_to_reels.ShareToIGReelsMultiClipsActivity">
+        </activity>
+
+        <activity android:name="com.example.android_share_to_reels.ShareToIGReelsSingleImageActivity">
+        </activity>
+
+        <activity android:name="com.example.android_share_to_reels.ShareToIGReelsMultiImagesActivity">
+        </activity>
+
+        <activity android:name="com.example.android_share_to_reels.ShareToIGReelsMultiMediaActivity">
+        </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android_share_to_reels.fileprovider"
